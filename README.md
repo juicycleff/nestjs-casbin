@@ -19,87 +19,15 @@ NestJs Casbin Mongodb
 ## Installation
 
 ```bash
-$ yarn install @juicycleff/nestjs-event-store
-```
-
-## Setup root app module
-
-```typescript
-import { Module } from '@nestjs/common';
-import { NestjsEventStoreModule } from '@juicycleff/nestjs-event-store';
-
-@Module({
-  imports: [
-    NestjsEventStoreModule.forRoot({
-      http: {
-        port: parseInt(process.env.ES_HTTP_PORT, 10),
-        protocol: process.env.ES_HTTP_PROTOCOL,
-      },
-      tcp: {
-        credentials: {
-          password: process.env.ES_TCP_PASSWORD,
-          username: process.env.ES_TCP_USERNAME,
-        },
-        hostname: process.env.ES_TCP_HOSTNAME,
-        port: parseInt(process.env.ES_TCP_PORT, 10),
-        protocol: process.env.ES_TCP_PROTOCOL,
-      },
-    }),
-  ]
-})
-export class AppModule {}
+$ yarn install nestjs-casbin-mongodb
 ```
 
 ## Setup module
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { CommandBus, CqrsModule, EventBus } from '@nestjs/cqrs';
-import { NestjsEventStoreModule } from '@juicycleff/nestjs-event-store/nestjs-event-store.module';
-import { EventStore } from '@juicycleff/nestjs-event-store/event-store';
+import {  } from 'nestjs-casbin-mongodb';
 
-import {
-  UserCommandHandlers,
-  UserCreatedEvent,
-  UserEventHandlers,
-  UserQueryHandlers,
-} from '../cqrs';
-import { UserSagas } from './sagas';
-
-@Module({
-  imports: [
-    CqrsModule,
-    NestjsEventStoreModule.forFeature({
-      name: 'user',
-      resolveLinkTos: false,
-    }),
-  ],
-  
-  providers: [
-    UserSagas,
-    ...UserQueryHandlers,
-    ...UserCommandHandlers,
-    ...UserEventHandlers,
-  ],
-})
-export class UserModule {
-  constructor(
-    private readonly command$: CommandBus,
-    private readonly event$: EventBus,
-    private readonly authSagas: AuthSagas,
-    private readonly eventStore: EventStore,
-  ) {}
-
-  onModuleInit(): any {
-    this.eventStore.setEventHandlers(this.eventHandlers);
-    this.eventStore.bridgeEventsTo((this.event$ as any).subject$);
-    this.event$.publisher = this.eventStore;
-  }
-
-  eventHandlers = {
-    UserCreatedEvent: (data) => new UserCreatedEvent(data),
-  };
-}
 ```
 
 ## License
