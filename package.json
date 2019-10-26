@@ -1,7 +1,7 @@
 {
-  "name": "@juicycleff/nestjs-event-store",
-  "version": "1.0.3",
-  "description": "NestJS CQRS module for EventStore.org CQRS",
+  "name": "nestjs-casbin-mongodb",
+  "version": "1.0.0",
+  "description": "NestJS Casbin module with MongoDB Adapter",
   "author": {
     "name": "Rex Isaac Raphael",
     "email": "rex.rahael@outlook.com",
@@ -10,7 +10,7 @@
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/juicycleff/nestjs-event-store",
+  "repository": "https://github.com/juicycleff/nestjs-casbin-mongodb",
   "license": "MIT",
   "keywords": [],
   "scripts": {
@@ -35,7 +35,7 @@
     "reset": "git clean -dfx && git reset --hard && npm i",
     "clean": "trash build test",
     "prepare-release": "run-s reset test cov:check doc:html version doc:publish",
-    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('nestjs-event-store must be installed with Yarn: https://yarnpkg.com/')\""
+    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('nestjs-casbin-mongodb must be installed with Yarn: https://yarnpkg.com/')\""
   },
   "scripts-info": {
     "info": "Display information about the package scripts",
@@ -54,14 +54,12 @@
     "node": ">=8.9"
   },
   "dependencies": {
-    "axios": "^0.19.0",
-    "geteventstore-promise2": "^3.1.3",
-    "node-eventstore-client": "^0.2.13"
+    "casbin-mongodb-adapter": "^1.0.5"
   },
   "peerDependencies": {
-    "@nestjs/cqrs": "^6.0.1",
-    "@nestjs/core": "^6.0.0",
-    "@nestjs/common": "^6.0.0"
+    "casbin": "^3.0.4",
+    "@nestjs/common": "^6.0.0",
+    "mongodb": "^3.3.3"
   },
   "devDependencies": {
     "@bitjson/npm-scripts-info": "^1.0.0",

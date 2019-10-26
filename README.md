@@ -1,9 +1,9 @@
 <h1 align="center">
-NestJs Event Store
+NestJs Casbin Mongodb
 </h1>
   
 <p align="center">
-  NestJS CQRS module for EventStore.org. It requires @nestjs/cqrs.
+  NestJS module for Casbin using the MongoDB Adapter
 </p>
     <p align="center">
 </p>
