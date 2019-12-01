@@ -1,10 +1,11 @@
-import { DynamicModule, Module, Provider } from '@nestjs/common';
+import { DynamicModule, Module, Provider, Global } from '@nestjs/common';
 import { newEnforcer } from 'casbin';
 import { MongoClientOptions } from 'mongodb';
 import { MongoAdapter } from 'casbin-mongodb-adapter';
 import { NestCasbinService } from './nest-casbin.service';
 import { CASBIN_ENFORCER } from './nest-casbin.constants';
 
+@Global()
 @Module({
   providers: [NestCasbinService],
   exports: [NestCasbinService],
