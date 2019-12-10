@@ -107,6 +107,6 @@ export class NestCasbinService {
   // TODO: edit this in adapter to make it query from database
   // the operation will look like `await this.enforcer.getAdapter().enforce()`
   public async checkPermission(...params: any[]) {
-    return this.enforcer.enforce(params);
+    return this.enforcer.enforce(...params);
   }
 }
