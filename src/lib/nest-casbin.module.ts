@@ -22,11 +22,13 @@ export class NestCasbinModule {
       provide: CASBIN_ENFORCER,
       useFactory: async () => {
         const adapter = await MongoAdapter.newAdapter({
-          uri: uri || 'mongodb://localhost:27017',
+          uri,
           collectionName: collectionName || 'casbin',
           databaseName: databaseName || 'node-casbin-official',
           option: clientOptions,
         });
+
+        await adapter.open();
         const enforcer = await newEnforcer(casbinModelPath, adapter);
         await enforcer.loadPolicy();
         return enforcer;

@@ -1526,13 +1526,12 @@ capture-exit@^2.0.0:
   dependencies:
     rsvp "^4.8.4"
 
-casbin-mongodb-adapter@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/casbin-mongodb-adapter/-/casbin-mongodb-adapter-1.0.5.tgz#d50d0a6f995f2f76633244ed3c9ebf8464acd008"
-  integrity sha512-wbxi81dnzUY9YZzktUGsRtglbzV+CuVCrw3DnVzsmH2gP3Q9+zIHcWV6Boz+rA/Gq65ef7TYDhH8MqIQQLbeww==
+casbin-mongodb-adapter@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/casbin-mongodb-adapter/-/casbin-mongodb-adapter-1.0.8.tgz#f500f2922d573cae465081f0719ef7886b268991"
+  integrity sha512-NifGr0LgBYIayAyobBMq0lQHgG+qpfvEzevgaR4oKuONizI1Zv3uXrHVK9inMbffhTZhPFFmXnpmPod+cICv+w==
   dependencies:
     casbin "^3.0.4"
-    mongodb "^3.3.3"
     sha.js "^2.4.11"
 
 casbin@^3.0.4:
