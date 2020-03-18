@@ -1,6 +1,6 @@
 {
   "name": "nestjs-casbin-mongodb",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "NestJS Casbin module with MongoDB Adapter",
   "author": {
     "name": "Rex Isaac Raphael",
@@ -34,8 +34,7 @@
     "version": "standard-version",
     "reset": "git clean -dfx && git reset --hard && npm i",
     "clean": "trash build test",
-    "prepare-release": "run-s reset test cov:check doc:html version doc:publish",
-    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('yarn') === -1) throw new Error('nestjs-casbin-mongodb must be installed with Yarn: https://yarnpkg.com/')\""
+    "prepare-release": "run-s reset test cov:check doc:html version doc:publish"
   },
   "scripts-info": {
     "info": "Display information about the package scripts",
@@ -54,12 +53,13 @@
     "node": ">=8.9"
   },
   "dependencies": {
-    "casbin-mongodb-adapter": "^1.0.8"
+    "casbin-mongodb-adapter": "^1.0.8",
+    "uuid": "^7.0.2"
   },
   "peerDependencies": {
-    "casbin": "^3.0.4",
-    "@nestjs/common": "^6.0.0",
-    "mongodb": "^3.3.3"
+    "@nestjs/common": "^7.0.3",
+    "casbin": "^4.1.1",
+    "mongodb": "^3.5.5"
   },
   "devDependencies": {
     "@bitjson/npm-scripts-info": "^1.0.0",
