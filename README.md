@@ -26,7 +26,23 @@ $ yarn install nestjs-casbin-mongodb
 
 ```typescript
 import { Module } from '@nestjs/common';
-import {  } from 'nestjs-casbin-mongodb';
+import { NestCasbinModule } from 'nestjs-casbin-mongodb';
+import { join } from 'path';
+
+@Module({
+  imports: [
+    NestCasbinModule.forRoot({
+      uri: 'mongo://localhost:27017',
+      casbinModelPath: join(__dirname, './rbac_model.conf'),
+      collectionName: 'roles',
+      databaseName: 'my-db-name',
+    }),
+  ],
+  controllers: [],
+  providers: [],
+})
+export class AppModule {}
+
 
 ```
 

@@ -1,6 +1,6 @@
 {
   "name": "nestjs-casbin-mongodb",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "NestJS Casbin module with MongoDB Adapter",
   "author": {
     "name": "Rex Isaac Raphael",
