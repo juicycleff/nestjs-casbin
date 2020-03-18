@@ -1516,22 +1516,14 @@ capture-exit@^2.0.0:
   dependencies:
     rsvp "^4.8.4"
 
-casbin-mongodb-adapter@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/casbin-mongodb-adapter/-/casbin-mongodb-adapter-1.0.8.tgz#f500f2922d573cae465081f0719ef7886b268991"
-  integrity sha512-NifGr0LgBYIayAyobBMq0lQHgG+qpfvEzevgaR4oKuONizI1Zv3uXrHVK9inMbffhTZhPFFmXnpmPod+cICv+w==
+casbin-mongodb-adapter@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/casbin-mongodb-adapter/-/casbin-mongodb-adapter-1.1.2.tgz#51fa99e04c7e3892eb78ec4cb8f4b71fadbbc99e"
+  integrity sha512-7UieFrhUtA7gat1+yty3ErZYBCbC0+8HagnDOWdMlEdSXxxyXIj55FykPjTe1PSBWRC6fJ1yFZ7Ex4d5pQ2IYA==
   dependencies:
-    casbin "^3.0.4"
+    casbin "^4.1.1"
+    mongodb "^3.5.5"
     sha.js "^2.4.11"
-
-casbin@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/casbin/-/casbin-3.0.4.tgz#0790bd3acb19c4d36863da71cba0fb1f47db3bf7"
-  integrity sha512-k85OHmJmASxg7d16Ml8jJ/Q+D7hxslz++zxwtCUeNTH6rZCQcW+/NwUH6ankfTx2KCcGXQtSufSm/1vodPhb0Q==
-  dependencies:
-    expression-eval "^2.0.0"
-    ip "^1.1.5"
-    lodash "^4.17.15"
 
 casbin@^4.1.1:
   version "4.1.1"
