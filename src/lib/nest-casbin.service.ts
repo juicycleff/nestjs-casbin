@@ -4,7 +4,7 @@ import { CASBIN_ENFORCER } from './nest-casbin.constants';
 
 @Injectable()
 export class NestCasbinService {
-  constructor(@Inject(CASBIN_ENFORCER) private readonly enforcer: Enforcer) {}
+  constructor(@Inject(CASBIN_ENFORCER) public readonly enforcer: Enforcer) {}
 
   public async reloadPolicy() {
     await this.enforcer.loadPolicy();
@@ -26,6 +26,10 @@ export class NestCasbinService {
 
   public async getPolicy(): Promise<string[][]> {
     return this.enforcer.getPolicy();
+  }
+
+  public async enforce(...params: string[]): Promise<boolean> {
+    return this.enforcer.enforce(params)
   }
 
   public async getAllRoles(): Promise<string[]> {
