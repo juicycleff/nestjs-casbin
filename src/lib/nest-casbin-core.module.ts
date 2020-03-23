@@ -36,7 +36,6 @@ export class NestCasbinCoreModule {
         });
 
         await adapter.open();
-        await adapter.createDBIndex();
         const enforcer = await newEnforcer(options.casbinModelPath, adapter);
         await enforcer.loadPolicy();
         return enforcer;
