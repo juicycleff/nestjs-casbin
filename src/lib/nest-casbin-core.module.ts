@@ -35,7 +35,6 @@ export class NestCasbinCoreModule {
           option: options.clientOptions,
         });
 
-        await adapter.open();
         const enforcer = await newEnforcer(options.casbinModelPath, adapter);
         await enforcer.loadPolicy();
         return enforcer;
