@@ -1,6 +1,6 @@
 {
   "name": "nestjs-casbin-mongodb",
-  "version": "1.2.3",
+  "version": "1.2.5",
   "description": "NestJS Casbin module with MongoDB Adapter",
   "author": {
     "name": "Rex Isaac Raphael",
@@ -53,11 +53,9 @@
     "node": ">=8.9"
   },
   "dependencies": {
-    "casbin-mongodb-adapter": "^1.1.8",
-    "uuid": "^7.0.2",
-    "@nestjs/common": "^7.0.3",
     "casbin": "^4.1.1",
-    "mongodb": "^3.5.5"
+    "casbin-mongodb-adapter": "^1.1.10",
+    "uuid": "^7.0.2"
   },
   "peerDependencies": {
     "@nestjs/common": "^7.0.3",
