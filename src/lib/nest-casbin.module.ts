@@ -1,20 +1,20 @@
-import { DynamicModule, Module, Provider, Global } from '@nestjs/common';
+import { DynamicModule, Module } from '@nestjs/common';
 import { NestCasbinCoreModule } from './nest-casbin-core.module';
 import { NestCasbinModuleAsyncOptions, NestCasbinModuleOptions } from './interfaces/nest-casbin.interface';
 
 @Module({})
 export class NestCasbinModule {
-  public static forRoot(options: NestCasbinModuleOptions): DynamicModule {
+  public static register(options: NestCasbinModuleOptions): DynamicModule {
     return {
       module: NestCasbinModule,
-      imports: [NestCasbinCoreModule.forRoot(options)],
+      imports: [NestCasbinCoreModule.register(options)],
     };
   }
 
-  public static forRootAsync(options: NestCasbinModuleAsyncOptions): DynamicModule {
+  public static registerAsync(options: NestCasbinModuleAsyncOptions): DynamicModule {
     return {
       module: NestCasbinModule,
-      imports: [NestCasbinCoreModule.forRootAsync(options)],
+      imports: [NestCasbinCoreModule.registerAsync(options)],
     };
   }
 }
