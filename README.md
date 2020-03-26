@@ -52,19 +52,13 @@ export class AppModule {}
 
 ```typescript
 import { Module, Injectable } from '@nestjs/common';
-import { NestCasbinModule } from 'nestjs-casbin';
 import { MongoAdapter } from 'casbin-mongodb-adapter';
-import { NestCasbinModuleOptions, NestCasbinOptionsFactory } from 'nestjs-casbin-mongodb';
-import { InjectConfig, ConsulConfig } from '@nestcloud/config';
+import { NestCasbinModuleOptions, NestCasbinOptionsFactory, NestCasbinModule } from 'nestjs-casbin';
 import { join } from 'path';
 
 @Injectable()
-export class CasbinUserConfigService implements NestCasbinOptionsFactory {
-  constructor(
-    @InjectConfig() private readonly config: ConsulConfig,
-  ) {}
-
-  createCasbinOptions(connectionName?: string): Promise<NestCasbinModuleOptions> | NestCasbinModuleOptions {
+export class CasbinConfigService implements NestCasbinOptionsFactory {
+  async createCasbinOptions(connectionName?: string): Promise<NestCasbinModuleOptions> | NestCasbinModuleOptions {
     
     const adapter = await MongoAdapter.newAdapter({
        uri: 'mongodb://localhost:27017',
@@ -82,7 +76,7 @@ export class CasbinUserConfigService implements NestCasbinOptionsFactory {
 @Module({
   imports: [
     NestCasbinModule.registerAsync({
-      useClass: 
+      useClass: CasbinConfigService
     }),
   ],
   controllers: [],
