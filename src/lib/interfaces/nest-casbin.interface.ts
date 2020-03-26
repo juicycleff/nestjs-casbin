@@ -1,10 +1,10 @@
 import { ModuleMetadata } from '@nestjs/common/interfaces';
 import { Type } from '@nestjs/common';
-import { Adapter } from 'casbin';
+import { Adapter, Model } from 'casbin';
 
 export interface NestCasbinModuleOptions {
   adapter: Type<Adapter> | any,
-  casbinModelPath: string,
+  model: string | Model,
 }
 
 export interface NestCasbinOptionsFactory {

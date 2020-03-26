@@ -27,7 +27,7 @@ export class NestCasbinCoreModule {
     const casbinEnforcerProvider: Provider = {
       provide: CASBIN_ENFORCER,
       useFactory: async () => {
-        const enforcer = await newEnforcer(options.casbinModelPath, options.adapter);
+        const enforcer = await newEnforcer(options.model, options.adapter);
         await enforcer.loadPolicy();
         return enforcer;
       },
@@ -43,7 +43,7 @@ export class NestCasbinCoreModule {
     const casbinEnforcerProvider: Provider = {
       provide: CASBIN_ENFORCER,
       useFactory: async (casbinOptions: NestCasbinModuleOptions) => {
-        const enforcer = await newEnforcer(casbinOptions.casbinModelPath, casbinOptions.adapter);
+        const enforcer = await newEnforcer(casbinOptions.model, casbinOptions.adapter);
         await enforcer.loadPolicy();
         return enforcer;
       },
