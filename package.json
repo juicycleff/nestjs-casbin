@@ -54,13 +54,12 @@
   },
   "dependencies": {
     "casbin": "^4.1.1",
-    "casbin-mongodb-adapter": "^1.1.10",
+    "casbin-mongodb-adapter": "^1.1.11",
     "mongodb": "^3.5.5",
     "uuid": "^7.0.2"
   },
   "peerDependencies": {
-    "@nestjs/common": "^7.0.3",
-    "casbin": "^4.1.1"
+    "@nestjs/common": "^7.0.3"
   },
   "devDependencies": {
     "@bitjson/npm-scripts-info": "^1.0.0",
