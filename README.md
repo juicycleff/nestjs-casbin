@@ -3,7 +3,7 @@ NestJs Casbin Mongodb
 </h1>
   
 <p align="center">
-  NestJS module for Casbin using the MongoDB Adapter
+  NestJS module for Casbin. Supports all adapters
 </p>
     <p align="center">
 </p>
@@ -91,7 +91,7 @@ export class CasbinUserConfigService implements NestCasbinOptionsFactory {
 export class AppModule {}
 ```
 
-## Pre 2.0.0
+## Pre 2.0.0 which supports only mongodb adapter
 ### Installation
 
 ```bash
