@@ -3,7 +3,7 @@ import { Type } from '@nestjs/common';
 import { Adapter } from 'casbin';
 
 export interface NestCasbinModuleOptions {
-  adapter: Adapter | any,
+  adapter: Type<Adapter> | any,
   casbinModelPath: string,
 }
 
