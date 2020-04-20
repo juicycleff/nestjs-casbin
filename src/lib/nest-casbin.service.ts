@@ -31,7 +31,7 @@ export class NestCasbinService {
   }
 
   public async enforce(...params: string[]): Promise<boolean> {
-    return this.enforcer.enforce(params)
+    return this.enforcer.enforce(...params);
   }
 
   public async getAllRoles(): Promise<string[]> {
@@ -46,23 +46,41 @@ export class NestCasbinService {
     return this.enforcer.getAllSubjects();
   }
 
-  public async getUsersForRole(name: string, domain?: string): Promise<string[]> {
+  public async getUsersForRole(
+    name: string,
+    domain?: string
+  ): Promise<string[]> {
     return this.enforcer.getUsersForRole(name, domain);
   }
 
-  public async hasRoleForUser(user: string, role: string, domain?: string): Promise<boolean> {
+  public async hasRoleForUser(
+    user: string,
+    role: string,
+    domain?: string
+  ): Promise<boolean> {
     return this.enforcer.hasRoleForUser(user, role, domain);
   }
 
-  public async addRoleForUser(user: string, role: string, domain?: string): Promise<boolean> {
+  public async addRoleForUser(
+    user: string,
+    role: string,
+    domain?: string
+  ): Promise<boolean> {
     return this.enforcer.addRoleForUser(user, role, domain);
   }
 
-  public async deleteRoleForUser(user: string, role: string, domain?: string): Promise<boolean> {
+  public async deleteRoleForUser(
+    user: string,
+    role: string,
+    domain?: string
+  ): Promise<boolean> {
     return this.enforcer.deleteRoleForUser(user, role, domain);
   }
 
-  public async deleteRolesForUser(user: string, domain?: string): Promise<boolean> {
+  public async deleteRolesForUser(
+    user: string,
+    domain?: string
+  ): Promise<boolean> {
     return this.enforcer.deleteRolesForUser(user, domain);
   }
 
@@ -78,11 +96,17 @@ export class NestCasbinService {
     return this.enforcer.deletePermission(...permissions);
   }
 
-  public async addPermissionForUser(user: string,...permissions: string[]): Promise<boolean> {
+  public async addPermissionForUser(
+    user: string,
+    ...permissions: string[]
+  ): Promise<boolean> {
     return this.enforcer.addPermissionForUser(user, ...permissions);
   }
 
-  public async deletePermissionForUser(user: string,...permissions: string[]): Promise<boolean> {
+  public async deletePermissionForUser(
+    user: string,
+    ...permissions: string[]
+  ): Promise<boolean> {
     return this.enforcer.deletePermissionForUser(user, ...permissions);
   }
 
@@ -94,7 +118,10 @@ export class NestCasbinService {
     return this.enforcer.getPermissionsForUser(user);
   }
 
-  public async hasPermissionForUser(user: string, ...permissions: string[]): Promise<boolean> {
+  public async hasPermissionForUser(
+    user: string,
+    ...permissions: string[]
+  ): Promise<boolean> {
     return await this.enforcer.hasPermissionForUser(user, ...permissions);
   }
 
@@ -106,19 +133,31 @@ export class NestCasbinService {
     return await this.enforcer.hasPolicy(...params);
   }
 
-  public async hasNamedPolicy(p: string, ...params: string[]): Promise<boolean> {
+  public async hasNamedPolicy(
+    p: string,
+    ...params: string[]
+  ): Promise<boolean> {
     return await this.enforcer.hasNamedPolicy(p, ...params);
   }
 
-  public async getRolesForUser(name: string, domain?: string): Promise<string[]> {
+  public async getRolesForUser(
+    name: string,
+    domain?: string
+  ): Promise<string[]> {
     return await this.enforcer.getRolesForUser(name, domain);
   }
 
-  public async getImplicitPermissionsForUser(name: string, ...domain: string[]): Promise<string[][]> {
+  public async getImplicitPermissionsForUser(
+    name: string,
+    ...domain: string[]
+  ): Promise<string[][]> {
     return await this.enforcer.getImplicitPermissionsForUser(name, ...domain);
   }
 
-  public async getImplicitRolesForUser(name: string, ...domain: string[]): Promise<string[]> {
+  public async getImplicitRolesForUser(
+    name: string,
+    ...domain: string[]
+  ): Promise<string[]> {
     return await this.enforcer.getImplicitRolesForUser(name, ...domain);
   }
 
@@ -159,15 +198,15 @@ export class NestCasbinService {
   }
 
   setEffector(eft: Effector): void {
-    return this.enforcer.setEffector(eft)
+    return this.enforcer.setEffector(eft);
   }
 
   clearPolicy(): void {
-    return this.enforcer.clearPolicy()
+    return this.enforcer.clearPolicy();
   }
 
   addGroupingPolicy(): Promise<boolean> {
-    return this.enforcer.addGroupingPolicy()
+    return this.enforcer.addGroupingPolicy();
   }
 
   // TODO: edit this in adapter to make it query from database
