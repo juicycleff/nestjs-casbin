@@ -1,6 +1,6 @@
 {
-  "name": "nestjs-casbin",
-  "version": "2.0.8",
+  "name": "@dimensionfour/nestjs-casbin",
+  "version": "2.0.9",
   "description": "NestJS Casbin module for all adapters",
   "author": {
     "name": "Rex Isaac Raphael",
@@ -10,7 +10,7 @@
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
-  "repository": "https://github.com/juicycleff/nestjs-casbin-mongodb",
+  "repository": "https://github.com/dimensionfour/nestjs-casbin",
   "license": "MIT",
   "keywords": [],
   "scripts": {
