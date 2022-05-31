@@ -1050,11 +1050,11 @@
         "signature": "df71b8968975d522b84a6cbb29faad591a0cafd3868c63e33591188484f74da2"
       },
       "../src/lib/interfaces/nest-casbin.interface.ts": {
-        "version": "77a54ac53c5375bdb16be55fe45328bd585355899c5a1e5865942cff6c71abf9",
-        "signature": "33ad627f6f49d9aaf73dd762f598732360e4522f2ad75693c6c51b9ec2c9772f"
+        "version": "2170ce5422f932091f0cb514774accdeae2029cb48901f2e720ff71d4197e870",
+        "signature": "cdba7dad51f879aff682c07ff302aec66521ee6d4f140283636fffa0726a32b3"
       },
       "../src/lib/nest-casbin-core.module.ts": {
-        "version": "74eb9d7d9b38ebe20ece930e111544f0095743668171cbb435f59ec162773dbd",
+        "version": "d0d65afa17826b2f9126301346e8ed0a7d25568a4475fd087960b9fef60187ea",
         "signature": "073cf67b42e48c5cdb50b5b1b796d568f5c390e28456f42a0e43b5b2f9c25074"
       },
       "../src/lib/nest-casbin.module.ts": {

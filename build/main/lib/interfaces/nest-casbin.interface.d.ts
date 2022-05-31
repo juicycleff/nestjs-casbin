@@ -1,7 +1,8 @@
 import { ModuleMetadata } from '@nestjs/common/interfaces';
 import { Type } from '@nestjs/common';
-import { Adapter, Model } from 'casbin';
+import { Adapter, Model, Watcher } from 'casbin';
 export interface NestCasbinModuleOptions {
+    watcher?: Type<Watcher> | any;
     adapter: Type<Adapter> | any;
     model: string | Model;
 }

@@ -1,6 +1,6 @@
 {
   "name": "@dimensionfour/nestjs-casbin",
-  "version": "2.0.9",
+  "version": "2.0.10",
   "description": "NestJS Casbin module for all adapters",
   "author": {
     "name": "Rex Isaac Raphael",

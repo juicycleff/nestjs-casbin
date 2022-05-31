@@ -10,44 +10,54 @@ import {
 
 import {
   NestCasbinModuleAsyncOptions,
-  NestCasbinModuleOptions, NestCasbinOptionsFactory
+  NestCasbinModuleOptions,
+  NestCasbinOptionsFactory
 } from './interfaces/nest-casbin.interface';
-
 
 export const generateString = () => uuid();
 
 @Global()
 @Module({
   providers: [NestCasbinService],
-  exports: [NestCasbinService],
+  exports: [NestCasbinService]
 })
 export class NestCasbinCoreModule {
-
   public static register(options: NestCasbinModuleOptions): DynamicModule {
     const casbinEnforcerProvider: Provider = {
       provide: CASBIN_ENFORCER,
       useFactory: async () => {
         const enforcer = await newEnforcer(options.model, options.adapter);
+        if (options.watcher) {
+          enforcer.setWatcher(options.watcher);
+        }
         await enforcer.loadPolicy();
         return enforcer;
-      },
+      }
     };
     return {
       exports: [casbinEnforcerProvider, NestCasbinService],
       module: NestCasbinCoreModule,
-      providers: [casbinEnforcerProvider, NestCasbinService],
+      providers: [casbinEnforcerProvider, NestCasbinService]
     };
   }
 
-  public static registerAsync(options: NestCasbinModuleAsyncOptions): DynamicModule {
+  public static registerAsync(
+    options: NestCasbinModuleAsyncOptions
+  ): DynamicModule {
     const casbinEnforcerProvider: Provider = {
       provide: CASBIN_ENFORCER,
       useFactory: async (casbinOptions: NestCasbinModuleOptions) => {
-        const enforcer = await newEnforcer(casbinOptions.model, casbinOptions.adapter);
+        const enforcer = await newEnforcer(
+          casbinOptions.model,
+          casbinOptions.adapter
+        );
+        if (casbinOptions.watcher) {
+          enforcer.setWatcher(casbinOptions.watcher);
+        }
         await enforcer.loadPolicy();
         return enforcer;
       },
-      inject: [NEST_CASBIN_OPTION],
+      inject: [NEST_CASBIN_OPTION]
     };
 
     const asyncProviders = this.createAsyncProviders(options);
@@ -60,15 +70,15 @@ export class NestCasbinCoreModule {
         NestCasbinService,
         {
           provide: NEST_CASBIN_MODULE_ID,
-          useValue: generateString(),
-        },
+          useValue: generateString()
+        }
       ],
-      exports: [casbinEnforcerProvider, NestCasbinService],
+      exports: [casbinEnforcerProvider, NestCasbinService]
     };
   }
 
   private static createAsyncProviders(
-    options: NestCasbinModuleAsyncOptions,
+    options: NestCasbinModuleAsyncOptions
   ): Provider[] {
     if (options.useExisting || options.useFactory) {
       return [this.createAsyncOptionsProvider(options)];
@@ -78,29 +88,31 @@ export class NestCasbinCoreModule {
       this.createAsyncOptionsProvider(options),
       {
         provide: useClass,
-        useClass,
-      },
+        useClass
+      }
     ];
   }
 
   private static createAsyncOptionsProvider(
-    options: NestCasbinModuleAsyncOptions,
+    options: NestCasbinModuleAsyncOptions
   ): Provider {
     if (options.useFactory) {
       return {
         provide: NEST_CASBIN_OPTION,
         useFactory: options.useFactory,
-        inject: options.inject || [],
+        inject: options.inject || []
       };
     }
     const inject = [
-      (options.useClass || options.useExisting) as Type<NestCasbinOptionsFactory>,
+      (options.useClass || options.useExisting) as Type<
+        NestCasbinOptionsFactory
+      >
     ];
     return {
       provide: NEST_CASBIN_OPTION,
       useFactory: async (optionsFactory: NestCasbinOptionsFactory) =>
         await optionsFactory.createCasbinOptions(),
-      inject,
+      inject
     };
   }
 }
