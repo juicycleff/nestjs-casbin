@@ -13,17 +13,11 @@ export class NestCasbinService {
   }
 
   public async addPolicy(...params: string[]) {
-    const added = await this.enforcer.addPolicy(...params);
-    if (added) {
-      await this.enforcer.savePolicy();
-    }
+    return this.enforcer.addPolicy(...params);
   }
 
   public async removePolicy(...params: string[]) {
-    const removed = await this.enforcer.removePolicy(...params);
-    if (removed) {
-      await this.enforcer.savePolicy();
-    }
+    return this.enforcer.removePolicy(...params);
   }
 
   public async getPolicy(): Promise<string[][]> {
