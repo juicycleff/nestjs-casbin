@@ -8,12 +8,14 @@ import { MongoAdapter } from 'casbin-mongodb-adapter';
 
 describe('NestCasbinService', () => {
   let service: NestCasbinService;
+  let module: TestingModule;
+  let adapter: MongoAdapter
 
   const casbinEnforcerProvider: Provider = {
     provide: CASBIN_ENFORCER,
     useFactory: async () => {
-      const model = path.resolve(__dirname, '../test-files/rbac_model.conf');
-      const adapter = await MongoAdapter.newAdapter({
+      const model = path.resolve(__dirname, '../rbac_model.conf');
+      adapter = await MongoAdapter.newAdapter({
         uri: 'mongodb://localhost:27017',
         collectionName: 'casbin',
         databaseName: 'casbindb',
@@ -23,14 +25,19 @@ describe('NestCasbinService', () => {
       return e;
     },
   };
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+  beforeAll(async () => {
+    module = await Test.createTestingModule({
       providers: [casbinEnforcerProvider, NestCasbinService],
       exports: [NestCasbinService],
     }).compile();
 
     service = module.get<NestCasbinService>(NestCasbinService);
   });
+
+  afterAll(async() => {
+    await module.close()
+    await adapter.close()
+  })
 
   it('should be defined', () => {
     expect(service).toBeDefined();
