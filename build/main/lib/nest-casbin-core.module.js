@@ -7,18 +7,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var NestCasbinCoreModule_1;
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.NestCasbinCoreModule = exports.generateString = void 0;
 const common_1 = require("@nestjs/common");
 const casbin_1 = require("casbin");
 const uuid_1 = require("uuid");
 const nest_casbin_service_1 = require("./nest-casbin.service");
 const nest_casbin_constants_1 = require("./nest-casbin.constants");
-exports.generateString = () => uuid_1.v4();
+const generateString = () => (0, uuid_1.v4)();
+exports.generateString = generateString;
 let NestCasbinCoreModule = NestCasbinCoreModule_1 = class NestCasbinCoreModule {
     static register(options) {
         const casbinEnforcerProvider = {
             provide: nest_casbin_constants_1.CASBIN_ENFORCER,
             useFactory: async () => {
-                const enforcer = await casbin_1.newEnforcer(options.model, options.adapter);
+                const enforcer = await (0, casbin_1.newEnforcer)(options.model, options.adapter);
                 if (options.watcher) {
                     enforcer.setWatcher(options.watcher);
                 }
@@ -36,7 +38,7 @@ let NestCasbinCoreModule = NestCasbinCoreModule_1 = class NestCasbinCoreModule {
         const casbinEnforcerProvider = {
             provide: nest_casbin_constants_1.CASBIN_ENFORCER,
             useFactory: async (casbinOptions) => {
-                const enforcer = await casbin_1.newEnforcer(casbinOptions.model, casbinOptions.adapter);
+                const enforcer = await (0, casbin_1.newEnforcer)(casbinOptions.model, casbinOptions.adapter);
                 if (casbinOptions.watcher) {
                     enforcer.setWatcher(casbinOptions.watcher);
                 }
@@ -55,7 +57,7 @@ let NestCasbinCoreModule = NestCasbinCoreModule_1 = class NestCasbinCoreModule {
                 nest_casbin_service_1.NestCasbinService,
                 {
                     provide: nest_casbin_constants_1.NEST_CASBIN_MODULE_ID,
-                    useValue: exports.generateString()
+                    useValue: (0, exports.generateString)()
                 }
             ],
             exports: [casbinEnforcerProvider, nest_casbin_service_1.NestCasbinService]
@@ -93,8 +95,8 @@ let NestCasbinCoreModule = NestCasbinCoreModule_1 = class NestCasbinCoreModule {
     }
 };
 NestCasbinCoreModule = NestCasbinCoreModule_1 = __decorate([
-    common_1.Global(),
-    common_1.Module({
+    (0, common_1.Global)(),
+    (0, common_1.Module)({
         providers: [nest_casbin_service_1.NestCasbinService],
         exports: [nest_casbin_service_1.NestCasbinService]
     })

@@ -14,6 +14,7 @@ import { Inject, Injectable } from '@nestjs/common';
 import { Enforcer } from 'casbin';
 import { CASBIN_ENFORCER } from './nest-casbin.constants';
 let NestCasbinService = class NestCasbinService {
+    enforcer;
     constructor(enforcer) {
         this.enforcer = enforcer;
     }

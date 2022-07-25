@@ -12,6 +12,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.NestCasbinService = void 0;
 const common_1 = require("@nestjs/common");
 const casbin_1 = require("casbin");
 const nest_casbin_constants_1 = require("./nest-casbin.constants");
@@ -141,8 +142,8 @@ let NestCasbinService = class NestCasbinService {
     }
 };
 NestCasbinService = __decorate([
-    common_1.Injectable(),
-    __param(0, common_1.Inject(nest_casbin_constants_1.CASBIN_ENFORCER)),
+    (0, common_1.Injectable)(),
+    __param(0, (0, common_1.Inject)(nest_casbin_constants_1.CASBIN_ENFORCER)),
     __metadata("design:paramtypes", [casbin_1.Enforcer])
 ], NestCasbinService);
 exports.NestCasbinService = NestCasbinService;
